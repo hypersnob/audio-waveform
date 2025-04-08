@@ -82,33 +82,9 @@ console.log(`Generated waveform: ${waveform}`);
 </script>
 ```
 
-## Publishing as an NPM Package
-
-To publish this as an NPM package:
-
-1. Build the WebAssembly module:
-
-   ```bash
-   wasm-pack build --target bundler
-   ```
-
-2. Navigate to the generated package directory:
-
-   ```bash
-   cd pkg
-   ```
-
-3. Publish to NPM:
-   ```bash
-   npm publish
-   ```
-
-## Example Projects
-
-See the included examples:
+## Example
 
 - `example.js` - Node.js example
-- `index.html` - Browser example
 
 ## License
 
