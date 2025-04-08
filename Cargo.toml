@@ -1,8 +1,7 @@
 [package]
 name = "audio-waveform-hash"
-description = "Wasm bindings for audio waveform hash library producing a value array encoded in base64"
-repository = "https://github.com/hypersnob/audio-waveform-hash"
-license = "MIT"
+description = "Wasm bindings for audio waveform library producing a binary array encoded in base64"
+repository = "https://github.com/hypersnob/audio-waveform-hash-wasm"
 license-file = "LICENSE.md"
 readme = "README.md"
 version = "0.1.0"

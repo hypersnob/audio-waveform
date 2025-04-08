@@ -93,7 +93,7 @@ fn generate_waveform_internal(
     // Determine downsampling rate
     let mut sample_count = 0;
     let mut current_max = 0.0f32;
-    let mut samples_per_point = 1000; // Default
+    let mut samples_per_point = 100; // Default
 
     // First pass to count total samples for better downsampling
     if let Some(n_frames) = track.codec_params.n_frames {

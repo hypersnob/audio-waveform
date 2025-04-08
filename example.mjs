@@ -1,9 +1,12 @@
 import fs from "fs";
 
-// Import our wasm module
-// Note: In actual usage, you'd import from your published package like:
-// const wasm = require('audio-waveform-hash');
-const wasm = await import("./pkg/audio_waveform_hash.js");
+// Import the WASM module
+import * as wasm from './pkg/audio_waveform_hash_bg.wasm';
+import { __wbg_set_wasm, generate_waveform_from_bytes } from './pkg/audio_waveform_hash_bg.js';
+
+// Initialize the WASM module
+__wbg_set_wasm(wasm);
+wasm.__wbindgen_start();
 
 async function main() {
   // Get command line arguments
@@ -30,19 +33,16 @@ async function main() {
 
     // Generate the waveform
     console.time("Waveform generation");
-    const wavehash = wasm.generate_waveform_from_bytes(
+    const wavehash = generate_waveform_from_bytes(
       new Uint8Array(audioData),
       maxAmplitude,
       points
     );
     console.timeEnd("Waveform generation");
 
-    // Output information about the waveform
+    // Whole string
     console.log(`Wavehash: ${wavehash}`);
 
-    // Show supported formats
-    const formats = wasm.get_supported_formats();
-    console.log(`Supported formats: ${formats.join(", ")}`);
   } catch (error) {
     console.error("Error:", error);
   }
