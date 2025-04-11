@@ -1,8 +1,8 @@
 import fs from "fs";
 
 // Import the WASM module
-import * as wasm from './pkg/audio_waveform_hash_bg.wasm';
-import { __wbg_set_wasm, generate_waveform_from_bytes } from './pkg/audio_waveform_hash_bg.js';
+import * as wasm from "./pkg/audio_waveform_bg.wasm";
+import { __wbg_set_wasm, generate_waveform_from_bytes } from "./pkg/audio_waveform_bg.js";
 
 // Initialize the WASM module
 __wbg_set_wasm(wasm);

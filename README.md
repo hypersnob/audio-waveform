@@ -1,12 +1,12 @@
-# Audio Waveform Hash Generator
+# Audio Waveform Generator
 
 This project provides a WebAssembly module for generating audio waveforms from various audio file formats (MP3, OGG, WAV, FLAC, etc.).
 
 ## Features
 
-- Generate waveform data from audio files as Uint8Array encoded in base64 string
+- Generate waveform data from audio files as Uint8Array
 - Configurable resolution and amplitude
-- Should work in Node.js, Deno, and browsers (hopefully)
+- Works in Node.js, Deno, and browsers
 - Processes MP3, OGG, FLAC, WAV and other formats supported by Symphonia
 
 ## Installation
@@ -15,14 +15,13 @@ This project provides a WebAssembly module for generating audio waveforms from v
 
 - [Rust](https://www.rust-lang.org/tools/install)
 - [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)
-- [Node (for testing)](https://nodejs.org/)
 
 ### Building the WebAssembly Module
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/audio-waveform-hash-wasm.git
-cd audio-waveform-hash-wasm
+git clone https://github.com/hypersnob/audio-waveform.git
+cd audio-waveform
 
 # Build the WebAssembly module
 wasm-pack build --target bundler
@@ -36,7 +35,7 @@ This will create a `pkg` directory with the compiled WebAssembly module and Java
 
 ```javascript
 const fs = require("fs");
-const wasm = require("./pkg/audio_waveform_hash.js");
+const wasm = require("./pkg/audio_waveform");
 
 // Read audio file
 const audioData = fs.readFileSync("path/to/audio.mp3");
@@ -45,19 +44,17 @@ const audioData = fs.readFileSync("path/to/audio.mp3");
 const waveform = wasm.generate_waveform_from_bytes(
   new Uint8Array(audioData),
   255, // max amplitude (0-255)
-  100 // number of data points to generate
+  1000 // number of data points to generate
 );
 
-console.log(`Generated waveform: ${waveform}`);
+console.log(`Generated waveform with ${waveform.length} data points`);
 ```
 
 ### In Browsers
 
 ```html
 <script type="module">
-  import init, {
-    generate_waveform_from_bytes,
-  } from "./pkg/audio_waveform-hash-wasm.js";
+  import init, { generate_waveform_from_bytes } from "./pkg/audio_waveform.js";
 
   async function run() {
     // Initialize the WebAssembly module
@@ -71,18 +68,20 @@ console.log(`Generated waveform: ${waveform}`);
     const waveform = generate_waveform_from_bytes(
       new Uint8Array(audioData),
       255, // max amplitude
-      100 // points
+      1000 // points
     );
 
     // Use the waveform data (e.g., draw on canvas)
-    console.log(`Generated waveform: ${waveform}`);
+    console.log(`Generated waveform with ${waveform.length} data points`);
   }
 
   run();
 </script>
 ```
 
-## Example
+## Example Projects
+
+See the included examples:
 
 - `example.js` - Node.js example
 

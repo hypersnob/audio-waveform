@@ -1,11 +1,11 @@
 {
-  "name": "audio-waveform-hash-wasm",
+  "name": "audio-waveform",
   "version": "0.1.0",
   "description": "WebAssembly module for generating audio waveforms",
-  "main": "pkg/audio_waveform_hash.js",
-  "module": "pkg/audio_waveform_hash.js",
+  "main": "pkg/audio_waveform.js",
+  "module": "pkg/audio_waveform.js",
   "type": "module",
-  "types": "pkg/audio_waveform_hash.d.ts",
+  "types": "pkg/audio_waveform.d.ts",
   "files": [
     "pkg"
   ],
@@ -20,7 +20,7 @@
     "rust",
     "wasm"
   ],
-  "author": "Your Name",
+  "author": "Oleg Zayarniy",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^22.14.0",
